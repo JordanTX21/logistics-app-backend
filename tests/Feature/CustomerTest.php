@@ -1,0 +1,35 @@
+<?php
+
+use App\Models\User;
+use Src\Customer\Models\Person;
+use Src\Customer\Models\Company;
+
+beforeEach(function () {
+    $this->user = User::factory()->create();
+    $this->token = auth('api')->login($this->user);
+    $this->headers = ['Authorization' => "Bearer {$this->token}"];
+});
+
+it('can create a person', function () {
+    $response = $this->withHeaders($this->headers)
+        ->postJson('/api/v1/customer/persons', [
+            'document_type' => 'DNI',
+            'document_number' => '12345678',
+            'first_name' => 'John',
+            'last_name' => 'Doe',
+        ]);
+
+    $response->assertStatus(201)
+        ->assertJsonPath('data.document_number', '12345678');
+});
+
+it('can create a company', function () {
+    $response = $this->withHeaders($this->headers)
+        ->postJson('/api/v1/customer/companies', [
+            'tax_id' => '20123456789',
+            'business_name' => 'Tech Logistics SAC',
+        ]);
+
+    $response->assertStatus(201)
+        ->assertJsonPath('data.tax_id', '20123456789');
+});
