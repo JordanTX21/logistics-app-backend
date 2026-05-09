@@ -22,9 +22,10 @@ endpoints:
       description: |-
         Registers a new order in the system, taking into account idempotency, customer and agency validations, and applies dynamic tariff pricing.
         Fires a background event when successful.
-      authenticated: false
+      authenticated: true
       deprecated: false
     headers:
+      Authorization: 'Bearer {ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -150,7 +151,10 @@ endpoints:
         headers: []
         description: ''
     responseFields: []
-    auth: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
     controller: null
     method: null
     route: null

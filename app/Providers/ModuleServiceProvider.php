@@ -19,6 +19,7 @@ class ModuleServiceProvider extends ServiceProvider
             base_path('src/Customer/routes.php'),
             base_path('src/Logistics/Order/routes.php'),
             base_path('src/Logistics/Payment/routes.php'),
+            base_path('src/Permission/routes.php'),
         ];
 
         foreach ($modules as $routeFile) {

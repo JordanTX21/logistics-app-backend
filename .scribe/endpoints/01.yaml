@@ -18,9 +18,10 @@ endpoints:
       subgroupDescription: ''
       title: 'List Agencies'
       description: 'Retrieves all registered agencies configured in the system.'
-      authenticated: false
+      authenticated: true
       deprecated: false
     headers:
+      Authorization: 'Bearer {ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -34,11 +35,14 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":[{"id":26,"code":"VDL##","name":"Dickens PLC","address":"78142 Nick Field","phone":"1-262-922-9279","district":"Ferneville","is_active":true},{"id":27,"code":"PSC##","name":"Smitham-Tromp","address":"5161 Vesta Coves Apt. 809","phone":"1-551-578-3706","district":"Batzbury","is_active":true}],"success":"true","message":"Agencies retrieved successfully."}'
+        content: '{"data":[{"id":46,"code":"UWP##","name":"Dare Group","address":"99279 Kenyatta Knoll","phone":"870-215-1024","district":"Lefflerhaven","is_active":true},{"id":47,"code":"WVL##","name":"Considine LLC","address":"459 Hank Oval Apt. 905","phone":"+1-747-759-6197","district":"Beierburgh","is_active":true}],"success":"true","message":"Agencies retrieved successfully."}'
         headers: []
         description: ''
     responseFields: []
-    auth: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
     controller: null
     method: null
     route: null
@@ -57,9 +61,10 @@ endpoints:
       subgroupDescription: ''
       title: 'Create Agency'
       description: 'Registers a new branch location where packages can be originated or received.'
-      authenticated: false
+      authenticated: true
       deprecated: false
     headers:
+      Authorization: 'Bearer {ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -127,7 +132,7 @@ endpoints:
         name: is_active
         description: ''
         required: false
-        example: true
+        example: false
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -139,17 +144,20 @@ endpoints:
       address: v
       phone: dljnikhwaykcmyuw
       district: p
-      is_active: true
+      is_active: false
     fileParameters: []
     responses:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":28,"code":"WLV##","name":"Baumbach Ltd","address":"427 Predovic Ridge","phone":"+1.541.543.5490","district":"Raynormouth","is_active":true},"success":"true","message":"Agency created successfully."}'
+        content: '{"data":{"id":48,"code":"WLV##","name":"Baumbach Ltd","address":"427 Predovic Ridge","phone":"+1.541.543.5490","district":"Raynormouth","is_active":true},"success":"true","message":"Agency created successfully."}'
         headers: []
         description: ''
     responseFields: []
-    auth: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
     controller: null
     method: null
     route: null
@@ -168,9 +176,10 @@ endpoints:
       subgroupDescription: ''
       title: 'Request Agency Details'
       description: 'Retrieves detailed geographical and contact information for a specific agency.'
-      authenticated: false
+      authenticated: true
       deprecated: false
     headers:
+      Authorization: 'Bearer {ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
@@ -196,11 +205,14 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":29,"code":"NGZ##","name":"Rempel, Gulgowski and O''Kon","address":"26343 Cecil Expressway Apt. 748","phone":"(806) 721-0719","district":"Leoberg","is_active":true},"success":"true","message":"Agency details retrieved successfully."}'
+        content: '{"data":{"id":49,"code":"QWR##","name":"Leuschke, Bauch and Fritsch","address":"29606 Tromp Rue Apt. 161","phone":"+12063337339","district":"Daphneview","is_active":true},"success":"true","message":"Agency details retrieved successfully."}'
         headers: []
         description: ''
     responseFields: []
-    auth: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
     controller: null
     method: null
     route: null
@@ -220,9 +232,10 @@ endpoints:
       subgroupDescription: ''
       title: 'Modify Agency'
       description: "Updates an existing agency's contact information, active status, or configured properties."
-      authenticated: false
+      authenticated: true
       deprecated: false
     headers:
+      Authorization: 'Bearer {ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
@@ -320,11 +333,14 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":30,"code":"QWR##","name":"Leuschke, Bauch and Fritsch","address":"29606 Tromp Rue Apt. 161","phone":"+12063337339","district":"Daphneview","is_active":true},"success":"true","message":"Agency updated successfully."}'
+        content: '{"data":{"id":50,"code":"SIT##","name":"O''Keefe Inc","address":"4067 Stokes Place","phone":"+12063337339","district":"Daphneview","is_active":true},"success":"true","message":"Agency updated successfully."}'
         headers: []
         description: ''
     responseFields: []
-    auth: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
     controller: null
     method: null
     route: null
@@ -343,9 +359,10 @@ endpoints:
       subgroupDescription: ''
       title: 'Delete Agency'
       description: 'Removes an agency from the system. (Warning: This action usually requires checking for relational integrity).'
-      authenticated: false
+      authenticated: true
       deprecated: false
     headers:
+      Authorization: 'Bearer {ACCESS_TOKEN}'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
@@ -375,7 +392,10 @@ endpoints:
         headers: []
         description: ''
     responseFields: []
-    auth: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
     controller: null
     method: null
     route: null
