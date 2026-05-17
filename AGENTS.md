@@ -9,7 +9,7 @@ Laravel 13 + PHP 8.3 REST API. JWT auth (`php-open-source-saver/jwt-auth`), `spa
 ## Commands
 
 - `composer dev` — starts `php artisan serve`, queue listener, and Vite concurrently.
-- `composer test` — clears config and runs `php artisan test` (Pest). Appends filter args, e.g. `composer test -- --filter=OrderTest`.
+- `composer test` — clears config and runs `php artisan test` (Pest). Append filter args, e.g. `composer test -- --filter=OrderTest`.
 - `php artisan test tests/Feature/OrderTest.php` — single file.
 - `./vendor/bin/pest --filter='it creates an order'` — single test by name.
 - `./vendor/bin/pint` — format PHP (Laravel Pint).

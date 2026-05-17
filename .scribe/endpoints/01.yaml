@@ -35,7 +35,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":[{"id":46,"code":"UWP##","name":"Dare Group","address":"99279 Kenyatta Knoll","phone":"870-215-1024","district":"Lefflerhaven","is_active":true},{"id":47,"code":"WVL##","name":"Considine LLC","address":"459 Hank Oval Apt. 905","phone":"+1-747-759-6197","district":"Beierburgh","is_active":true}],"success":"true","message":"Agencies retrieved successfully."}'
+        content: '{"data":[{"id":1,"code":"UWP##","name":"Dare Group","address":"99279 Kenyatta Knoll","phone":"870-215-1024","district":"Lefflerhaven","is_active":true},{"id":2,"code":"WVL##","name":"Considine LLC","address":"459 Hank Oval Apt. 905","phone":"+1-747-759-6197","district":"Beierburgh","is_active":true}],"success":"true","message":"Agencies retrieved successfully."}'
         headers: []
         description: ''
     responseFields: []
@@ -150,7 +150,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":48,"code":"WLV##","name":"Baumbach Ltd","address":"427 Predovic Ridge","phone":"+1.541.543.5490","district":"Raynormouth","is_active":true},"success":"true","message":"Agency created successfully."}'
+        content: '{"data":{"id":3,"code":"WLV##","name":"Baumbach Ltd","address":"427 Predovic Ridge","phone":"+1.541.543.5490","district":"Raynormouth","is_active":true},"success":"true","message":"Agency created successfully."}'
         headers: []
         description: ''
     responseFields: []
@@ -205,7 +205,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":49,"code":"QWR##","name":"Leuschke, Bauch and Fritsch","address":"29606 Tromp Rue Apt. 161","phone":"+12063337339","district":"Daphneview","is_active":true},"success":"true","message":"Agency details retrieved successfully."}'
+        content: '{"data":{"id":4,"code":"QWR##","name":"Leuschke, Bauch and Fritsch","address":"29606 Tromp Rue Apt. 161","phone":"+12063337339","district":"Daphneview","is_active":true},"success":"true","message":"Agency details retrieved successfully."}'
         headers: []
         description: ''
     responseFields: []
@@ -333,7 +333,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":50,"code":"SIT##","name":"O''Keefe Inc","address":"4067 Stokes Place","phone":"+12063337339","district":"Daphneview","is_active":true},"success":"true","message":"Agency updated successfully."}'
+        content: '{"data":{"id":5,"code":"SIT##","name":"O''Keefe Inc","address":"4067 Stokes Place","phone":"+12063337339","district":"Daphneview","is_active":true},"success":"true","message":"Agency updated successfully."}'
         headers: []
         description: ''
     responseFields: []

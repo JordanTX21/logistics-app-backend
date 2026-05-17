@@ -37,7 +37,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":11,"name":"Morgan Hirthe","guard_name":"api","permissions":[],"created_at":"2026-05-09T21:05:51.000000Z","updated_at":"2026-05-09T21:05:51.000000Z"}}'
+        content: '{"data":{"id":1,"name":"Morgan Hirthe","guard_name":"api","permissions":[],"created_at":"2026-05-17T02:02:31.000000Z","updated_at":"2026-05-17T02:02:31.000000Z"}}'
         headers: []
         description: ''
     responseFields: []
@@ -92,7 +92,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":12,"name":"Ms. Elisabeth Okuneva","guard_name":"api","permissions":[],"created_at":"2026-05-09T21:05:51.000000Z","updated_at":"2026-05-09T21:05:51.000000Z"}}'
+        content: '{"data":{"id":2,"name":"Ms. Elisabeth Okuneva","guard_name":"api","permissions":[],"created_at":"2026-05-17T02:02:31.000000Z","updated_at":"2026-05-17T02:02:31.000000Z"}}'
         headers: []
         description: ''
     responseFields: []
@@ -147,7 +147,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":13,"name":"Pearl Hauck Sr.","guard_name":"api","permissions":[],"created_at":"2026-05-09T21:05:51.000000Z","updated_at":"2026-05-09T21:05:51.000000Z"}}'
+        content: '{"data":{"id":3,"name":"Pearl Hauck Sr.","guard_name":"api","permissions":[],"created_at":"2026-05-17T02:02:31.000000Z","updated_at":"2026-05-17T02:02:31.000000Z"}}'
         headers: []
         description: ''
     responseFields: []
@@ -214,7 +214,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":14,"name":"Aleen O''Kon","guard_name":"api","permissions":[],"created_at":"2026-05-09T21:05:51.000000Z","updated_at":"2026-05-09T21:05:51.000000Z"}}'
+        content: '{"data":{"id":4,"name":"Aleen O''Kon","guard_name":"api","permissions":[],"created_at":"2026-05-17T02:02:31.000000Z","updated_at":"2026-05-17T02:02:31.000000Z"}}'
         headers: []
         description: ''
     responseFields: []
@@ -268,8 +268,8 @@ endpoints:
     responses:
       -
         custom: []
-        status: 500
-        content: '{"success":false,"message":"Internal Server Error"}'
+        status: 401
+        content: '{"success":false,"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -339,7 +339,7 @@ endpoints:
       -
         custom: []
         status: 200
-        content: '{"data":{"id":15,"name":"Ms. Audra Crooks II","guard_name":"api","permissions":[],"created_at":"2026-05-09T21:05:52.000000Z","updated_at":"2026-05-09T21:05:52.000000Z"}}'
+        content: '{"data":{"id":5,"name":"Ms. Audra Crooks II","guard_name":"api","permissions":[],"created_at":"2026-05-17T02:02:31.000000Z","updated_at":"2026-05-17T02:02:31.000000Z"}}'
         headers: []
         description: ''
     responseFields: []
@@ -377,14 +377,14 @@ endpoints:
         name: id
         description: 'The ID of the user.'
         required: true
-        example: 1
+        example: 16
         type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanUrlParameters:
-      id: 1
+      id: 16
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -417,8 +417,8 @@ endpoints:
     responses:
       -
         custom: []
-        status: 422
-        content: '{"success":false,"message":"The selected user id is invalid.","data":{"user_id":["The selected user id is invalid."],"role_ids":["The role ids field is required."]}}'
+        status: 401
+        content: '{"success":false,"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json

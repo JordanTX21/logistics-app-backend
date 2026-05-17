@@ -3,7 +3,7 @@
 Documentación Oficial del API Backend (REST) para el Sistema Core de Logística. Incluye facturación, envíos, finanzas y autenticación.
 
 <aside>
-    <strong>Base URL</strong>: <code>http://localhost:8000</code>
+    <strong>Base URL</strong>: <code>http://localhost</code>
 </aside>
 
     Esta documentación provee de todos los detalles técnicos, requerimientos y parámetros necesarios para poder interactuar exitosamente con las APIs del sistema Logístico.

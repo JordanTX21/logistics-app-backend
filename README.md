@@ -22,22 +22,22 @@ Laravel 13 REST API para gestión de logística (envíos, pagos, agencias y clie
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                    LOGISTICS APP BACKEND                     │
-│                  Laravel 13 + PHP 8.3                        │
+│                    LOGISTICS APP BACKEND                    │
+│                  Laravel 13 + PHP 8.3                       │
 ├─────────────────────────────────────────────────────────────┤
-│                                                               │
-│  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐     │
-│  │    Auth     │    │ Organization│    │  Customer   │     │
-│  │  (JWT)      │    │ (Agencies)  │    │(Persons/Cos)│     │
-│  └──────┬──────┘    └─────────────┘    └─────────────┘     │
-│         │                                                    │
+│                                                             │
+│  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐      │
+│  │    Auth     │    │ Organization│    │  Customer   │      │
+│  │  (JWT)      │    │ (Agencies)  │    │(Persons/Cos)│      │
+│  └──────┬──────┘    └─────────────┘    └─────────────┘      │
+│         │                                                   │
 │         └──────────────┬────────────────────────────────────┘
 │                        │
 │                    ┌─────────────┐
 │                    │   Logistics │
 │                    │ ┌─────────┐ │
 │                    │ │  Order  │ │
-│                    │ │Payment │ │
+│                    │ │Payment  │ │
 │                    │ └─────────┘ │
 │                    └─────────────┘
 │                        │
@@ -51,21 +51,21 @@ Laravel 13 REST API para gestión de logística (envíos, pagos, agencias y clie
 │                    │ (Traits,    │
 │                    │  Pipelines) │
 │                    └─────────────┘
-│                                                               │
+│                                                             │
 └─────────────────────────────────────────────────────────────┘
 ```
 
 ### Request Flow
 
 ```
-┌─────────┐     ┌─────────┐     ┌─────────┐     ┌─────────┐
+┌─────────┐     ┌──────────┐     ┌─────────┐     ┌─────────┐
 │  Client │────▶│Controller│────▶│ Form    │────▶│ UseCase │
-│ Request │     │ (Thin)  │     │ Request │     │         │
-└─────────┘     └─────────┘     └─────────┘     └────┬────┘
+│ Request │     │ (Thin)   │     │ Request │     │         │
+└─────────┘     └──────────┘     └─────────┘     └────┬────┘
                                                      │
                                                      ▼
                                             ┌─────────────────┐
-                                            │  RulesPipeline │
+                                            │  RulesPipeline  │
                                             │  (Validations)  │
                                             └────────┬────────┘
                                                      │
@@ -77,10 +77,10 @@ Laravel 13 REST API para gestión de logística (envíos, pagos, agencias y clie
                                             └────────┬────────┘
                                                      │
                                                      ▼
-┌─────────┐     ┌─────────┐     ┌─────────┐     ┌─────────┐
-│ Response│◀────│ApiResponse│◀────│ Model  │◀────│ Outbox │
-│(JSON)   │     │Trait    │     │ + DB   │     │ Event   │
-└─────────┘     └─────────┘     └─────────┘     └─────────┘
+┌─────────┐     ┌───────────┐     ┌─────────┐     ┌─────────┐
+│ Response│◀────│ApiResponse│◀────│ Model   │◀────│ Outbox  │
+│(JSON)   │     │Trait      │     │ + DB    │     │ Event   │
+└─────────┘     └───────────┘     └─────────┘     └─────────┘
 ```
 
 ### Patrones Clave
@@ -299,12 +299,12 @@ $modules = [
 
 ```
 ┌─────────────────┐      ┌─────────────────┐      ┌─────────────────┐
-│     persons     │      │    companies   │      │    agencies     │
+│     persons     │      │    companies    │      │    agencies     │
 ├─────────────────┤      ├─────────────────┤      ├─────────────────┤
-│ id (PK)         │      │ id (PK)        │      │ id (PK)         │
-│ document_type   │      │ tax_id (PK)    │      │ code            │
-│ document_number │      │ business_name  │      │ name            │
-│ first_name      │      │ address        │      │ is_active       │
+│ id (PK)         │      │ id (PK)         │      │ id (PK)         │
+│ document_type   │      │ tax_id (PK)     │      │ code            │
+│ document_number │      │ business_name   │      │ name            │
+│ first_name      │      │ address         │      │ is_active       │
 │ last_name       │      └─────────────────┘      └─────────────────┘
 │ email           │              │                    │
 │ phone           │              │                    │
@@ -316,22 +316,22 @@ $modules = [
                     ┌───────────┴───────────┐
                     │                       │
                     ▼                       ▼
-         ┌─────────────────┐      ┌─────────────────┐
-         │    orders       │      │    payments     │
-         ├─────────────────┤      ├─────────────────┤
-         │ id (PK)         │      │ id (PK)        │
-         │ ticket_number   │◀─────│ order_id (FK)  │
-         │ ticket_code     │      │ amount         │
-         │ idempotency_key │      │ payment_method │
-         │ sender_id (FK)  │      │ status         │
-         │ receiver_id (FK)│      │ processed_by   │
-         │ origin_agency   │      └─────────────────┘
+         ┌───────────────────┐      ┌─────────────────┐
+         │    orders         │      │    payments     │
+         ├───────────────────┤      ├─────────────────┤
+         │ id (PK)           │      │ id (PK)         │
+         │ ticket_number     │◀─────│ order_id (FK)   │
+         │ ticket_code       │      │ amount          │
+         │ idempotency_key   │      │ payment_method  │
+         │ sender_id (FK)    │      │ status          │
+         │ receiver_id (FK)  │      │ processed_by    │
+         │ origin_agency     │      └─────────────────┘
          │ destination_agency│
-         │ weight_kg       │
-         │ total_amount    │
-         │ status          │
-         │ created_by (FK) │
-         └─────────────────┘
+         │ weight_kg         │
+         │ total_amount      │
+         │ status            │
+         │ created_by (FK)   │
+         └───────────────────┘
                     │
                     ▼
          ┌─────────────────┐
