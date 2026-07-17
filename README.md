@@ -153,7 +153,114 @@ npm run build
 php artisan jwt:secret
 ```
 
+### Variables de Entorno
+
+Asegurate de configurar las variables en `.env`:
+
+**MySQL (Docker):**
+```env
+DB_CONNECTION=mysql
+DB_HOST=mysql
+DB_PORT=3306
+DB_DATABASE=logistics_app
+DB_USERNAME=root
+DB_PASSWORD=root
+```
+
+**MySQL (Nativo):**
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=logistics_app
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+**Redis:**
+```env
+REDIS_HOST=redis        # Docker
+# REDIS_HOST=127.0.0.1  # Nativo
+REDIS_PORT=6379
+```
+
+**JWT:**
+```env
+JWT_SECRET=             # Generar con: php artisan jwt:secret
+JWT_TTL=60
+JWT_REFRESH_TTL=20160
+```
+
+**Scribe (API docs):**
+```env
+SCRIBE_AUTH_ENABLED=true
+SCRIBE_AUTH_EMAIL=admin@admin.pe
+SCRIBE_AUTH_PASSWORD='TuPassword'
+```
+
 ## Desarrollo
+
+### Con Docker (Recomendado)
+
+Levanta toda la infraestructura (PHP-FPM, Nginx, MySQL 8.0, Redis) con un solo comando.
+
+```bash
+# 1. Construir y levantar todos los servicios
+docker compose up -d --build
+
+# 2. Instalar dependencias dentro del contenedor
+docker compose exec app composer install
+
+# 3. Generar clave de aplicación
+docker compose exec app php artisan key:generate
+
+# 4. Migrar base de datos
+docker compose exec app php artisan migrate --force
+
+# 5. Sembrar datos iniciales
+docker compose exec app php artisan db:seed --force
+```
+
+**Accesos:**
+| Servicio | URL | Puerto |
+|----------|-----|--------|
+| API | `http://localhost:8000` | `:8000` (Nginx) |
+| MySQL | `localhost:3306` | `:3306` |
+| Redis | `localhost:6379` | `:6379` |
+| Vite HMR | `http://localhost:5173` | `:5173` (node) |
+
+**Comandos útiles:**
+
+```bash
+# Ver logs en tiempo real
+docker compose logs -f app
+
+# Ejecutar artisan dentro del contenedor
+docker compose exec app php artisan migrate:fresh --seed
+docker compose exec app php artisan test
+docker compose exec app php artisan jwt:secret
+
+# Detener servicios (mantiene volúmenes)
+docker compose down
+
+# Detener y eliminar volúmenes (datos se pierden)
+docker compose down -v
+
+# Reconstruir después de cambios en Dockerfile
+docker compose up -d --build
+```
+
+**Estructura de servicios:**
+
+| Servicio | Imagen | Función |
+|----------|--------|---------|
+| `app` | PHP 8.3-FPM | Motor Laravel |
+| `nginx` | Nginx Alpine | Reverse proxy |
+| `mysql` | MySQL 8.0 | Base de datos |
+| `redis` | Redis 7 | Cache / queues |
+| `node` | Node 20 Alpine | Vite dev server |
+
+### Sin Docker (Nativo)
 
 ```bash
 # Iniciar servidor de desarrollo (server + queue + Vite)
@@ -392,7 +499,13 @@ Authorization: Bearer {token}
 
 ```bash
 # Development
-composer dev                    # serve + queue + Vite
+composer dev                    # serve + queue + Vite (nativo)
+docker compose up -d            # levantar con Docker
+
+# Docker
+docker compose exec app php artisan test   # tests en contenedor
+docker compose exec app php artisan migrate:fresh --seed  # migrar
+docker compose logs -f app                 # ver logs
 
 # Testing
 composer test                   # clear config + run tests
